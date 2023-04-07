@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body::before {
+    @apply bg-bgColor absolute top-0 right-0 -z-10 w-1/2 h-1/2 rounded-bl-[3.75rem] max-h-[427px];
+    content: "";
+  }
+}
+
+@layer components {
+  #menu-button.open .bar1 {
+    top: 7px;
+    transform: rotate(135deg);
+  }
+
+  #menu-button.open .bar2 {
+    opacity: 0;
+    left: -60px;
+  }
+
+  #menu-button.open .bar3 {
+    top: 7px;
+    transform: rotate(-135deg);
+  }
+
+  #nav-links.nav-active .links {
+    transform: translateX(-32px) !important;
+  }
+
+  @keyframes navLinkFade {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+@layer utilities {
+  .link:after,
+  .link-login:after {
+    @apply block w-0 h-[1.5px] bg-primary900 transition-all duration-300;
+    content: "";
+  }
+
+  .link-login:after {
+    @apply bg-opacity-50;
+  }
+
+  @media (hover: hover) and (min-width: 600px) {
+    .link:hover::after,
+    .link-login:hover::after {
+      width: 100%;
+    }
+  }
+}
+
+@media (hover: hover) {
+  .btn:hover {
+    @apply bg-accentColorHover;
+  }
+}
